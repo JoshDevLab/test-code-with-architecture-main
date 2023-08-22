@@ -1,11 +1,10 @@
-package com.example.demo.service;
+package com.example.demo.post.service;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import com.example.demo.post.domain.PostCreate;
 import com.example.demo.post.domain.PostUpdate;
 import com.example.demo.post.infrastructure.PostEntity;
-import com.example.demo.post.service.PostService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -56,12 +55,12 @@ public class PostServiceTest {
     @Test
     void postUpdateDto_를_이용하여_게시물을_수정할_수_있다() {
         // given
-        PostUpdate postUpdate = PostUpdate.builder()
+        PostUpdate postUpdateDto = PostUpdate.builder()
                 .content("hello world :)")
                 .build();
 
         // when
-        postService.update(1, postUpdate);
+        postService.update(1, postUpdateDto);
 
         // then
         PostEntity postEntity= postService.getById(1);
