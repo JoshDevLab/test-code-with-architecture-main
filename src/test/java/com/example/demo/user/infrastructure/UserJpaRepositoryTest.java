@@ -1,8 +1,6 @@
 package com.example.demo.user.infrastructure;
 
 import com.example.demo.user.domain.UserStatus;
-import com.example.demo.user.infrastructure.UserEntity;
-import com.example.demo.user.infrastructure.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -14,16 +12,16 @@ import static org.assertj.core.api.Assertions.*;
 
 @DataJpaTest(showSql = true)
 @Sql("/sql/user-repository-test-data.sql")
-public class UserRepositoryTest {
+public class UserJpaRepositoryTest {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserJpaRepository userJpaRepository;
 
     @Test
     void findByIdAndStatus_로_유저_데이터를_찾아올_수_있다() {
         // given
         // when
-        Optional<UserEntity> result = userRepository.findByIdAndStatus(1L, UserStatus.ACTIVE);
+        Optional<UserEntity> result = userJpaRepository.findByIdAndStatus(1L, UserStatus.ACTIVE);
 
         // then
         assertThat(result.isPresent()).isTrue();
@@ -33,7 +31,7 @@ public class UserRepositoryTest {
     void findByIdAndStatus_는_데이터가_없으면_Optional_empty_를_내려준다() {
         // given
         // when
-        Optional<UserEntity> result = userRepository.findByIdAndStatus(1L, UserStatus.PENDING);
+        Optional<UserEntity> result = userJpaRepository.findByIdAndStatus(1L, UserStatus.PENDING);
 
         // then
         assertThat(result.isEmpty()).isTrue();
@@ -43,7 +41,7 @@ public class UserRepositoryTest {
     void findByEmailAndStatus_로_유저_데이터를_찾아올_수_있다() {
         // given
         // when
-        Optional<UserEntity> result = userRepository.findByEmailAndStatus("kok202@naver.com", UserStatus.ACTIVE);
+        Optional<UserEntity> result = userJpaRepository.findByEmailAndStatus("kok202@naver.com", UserStatus.ACTIVE);
 
         // then
         assertThat(result.isPresent()).isTrue();
@@ -53,7 +51,7 @@ public class UserRepositoryTest {
     void findByEmailAndStatus_는_데이터가_없으면_Optional_empty_를_내려준다() {
         // given
         // when
-        Optional<UserEntity> result = userRepository.findByEmailAndStatus("", UserStatus.PENDING);
+        Optional<UserEntity> result = userJpaRepository.findByEmailAndStatus("", UserStatus.PENDING);
 
         // then
         assertThat(result.isEmpty()).isTrue();
