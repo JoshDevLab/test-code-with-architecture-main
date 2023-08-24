@@ -64,9 +64,9 @@ public class PostServiceTest {
         postService.update(1, postUpdateDto);
 
         // then
-        Post postEntity= postService.getById(1);
-        assertThat(postEntity.getContent()).isEqualTo("hello world :)");
-        assertThat(postEntity.getModifiedAt()).isGreaterThan(0);
+        Post post= postService.getById(1);
+        assertThat(post.getContent()).isEqualTo("hello world :)");
+        assertThat(post.getModifiedAt()).isGreaterThan(0);
     }
 
 }

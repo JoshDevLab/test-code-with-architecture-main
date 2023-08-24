@@ -112,10 +112,10 @@ public class UserServiceTest {
         userService.update(1, userUpdate);
 
         // then
-        User userEntity = userService.getById(1);
-        assertThat(userEntity.getId()).isNotNull();
-        assertThat(userEntity.getAddress()).isEqualTo("Incheon");
-        assertThat(userEntity.getNickname()).isEqualTo("kok202-n");
+        User user = userService.getById(1);
+        assertThat(user.getId()).isNotNull();
+        assertThat(user.getAddress()).isEqualTo("Incheon");
+        assertThat(user.getNickname()).isEqualTo("kok202-n");
     }
 
     @Test
@@ -125,8 +125,8 @@ public class UserServiceTest {
         userService.login(1);
 
         // then
-        User userEntity = userService.getById(1);
-        assertThat(userEntity.getLastLoginAt()).isGreaterThan(0);
+        User user = userService.getById(1);
+        assertThat(user.getLastLoginAt()).isGreaterThan(0);
         // assertThat(result.getLastLoginAt()).isEqualTo("T.T"); // FIXME
     }
 
@@ -137,8 +137,8 @@ public class UserServiceTest {
         userService.verifyEmail(2, "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaab");
 
         // then
-        User userEntity = userService.getById(2);
-        assertThat(userEntity.getStatus()).isEqualTo(UserStatus.ACTIVE);
+        User user = userService.getById(2);
+        assertThat(user.getStatus()).isEqualTo(UserStatus.ACTIVE);
     }
 
     @Test

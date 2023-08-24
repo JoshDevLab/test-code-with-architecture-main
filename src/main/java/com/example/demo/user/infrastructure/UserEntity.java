@@ -52,6 +52,7 @@ public class UserEntity {
         userEntity.address = user.getAddress();
         userEntity.certificationCode = user.getCertificationCode();
         userEntity.status = user.getStatus();
+        userEntity.lastLoginAt = user.getLastLoginAt();
         return userEntity;
     }
 
