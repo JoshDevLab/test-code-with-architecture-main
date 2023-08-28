@@ -1,11 +1,9 @@
-package com.example.demo.common.controller.dto;
+package com.example.demo.post.controller.response;
 
 import com.example.demo.post.domain.Post;
 import com.example.demo.user.controller.response.UserResponse;
-import com.example.demo.user.domain.User;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 @Builder
